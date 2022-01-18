@@ -1,14 +1,20 @@
 #include <iostream>
 
 using namespace std;
-int input;
+string input;
 
 int main(){
 
     while(true){
         cout << "\n>>>"; 
         cin >> input;
-        cout << input;
+
+        if(!isdigit(input)){
+            cout << "\"" << input << "\"" << "is neither a value nor found in the symtable";
+        }
+        else{
+            cout << input;
+        }
     }
 
     return 0;
