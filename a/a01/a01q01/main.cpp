@@ -5,10 +5,47 @@ using namespace std;
 // user input string
 string input;
 
+string getkeywords(string input){
+    string output = "";
+    for(int i = 0; i < input.length(); i++){
+
+        if(isdigit(input[i])){
+            output += input[i];
+        }
+
+        else{
+            cout << "ERROR: " << input[i] << " is neither a value nor found in the symtable";
+            break;
+        }
+    }
+
+    return output;
+}
+
+
+bool octalTest(string input){
+    int num;
+    string c =  string(1,input[0]);
+    try{
+        num = stoi(c);
+    }
+
+    catch(const std::exception& e){
+        return false;
+    }
+
+    if(input.length() > 1 && num == 0){
+        return true;
+    }
+
+    else{
+        return false;
+    }
+}
 
 int main(){
 
-    string output;
+    string output; 
 
     while(true){
 
@@ -16,32 +53,15 @@ int main(){
         cout << "\n>>>";
         cin >> input;
 
-        // convert input string to char array
-        char p[input.length()];
-        for(int i = 0; i <sizeof(input); i++){
-            p[i] = input[i];
+        output = getkeywords(input);
+        
+        if(octalTest(input) == true){
+            cout << "ERROR: I don't understand octals yet";
         }
 
-        for(int i = 0; i < sizeof(p); i++){
-
-            if(!isdigit(p[i])){
-                cout << "ERROR: " << input << " is neither a value nor found in the symtable";
-                break;
-            }
-
-            else if(p[0] == 0){
-                cout << "ERROR: I don't understand octals yet";
-                break;
-            }
-
-            else{
-                output += p[i];
-            }
-            
+        else{
+            cout << output;
         }
-
-        cout << output;
-        output = "";
 
     }
 
