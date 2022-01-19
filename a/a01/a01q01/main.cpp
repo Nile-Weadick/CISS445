@@ -13,6 +13,10 @@ string getkeywords(string input){
             output += input[i];
         }
 
+        else if(input[i] == '+' || input[i] == '+'){
+            
+        }
+
         else{
             cout << "ERROR: " << input[i] << " is neither a value nor found in the symtable";
             break;
