@@ -58,6 +58,11 @@ bool checkSymtable(string var){
 
 void evalExp(string exp){
     
+    for(int i=0; i<exp.length();i++){
+        if(exp[i] == '='){
+            
+        }
+    }
 }
 
 int main(){
