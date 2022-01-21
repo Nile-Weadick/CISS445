@@ -6,17 +6,48 @@
 using namespace std;
 
 string symtable[5][2];
+/*
 
-bool isInt(string x){
+--123
+123
+-+-123
+123
+
+int multiplyer = 1;
+multip * -1;
+*/
+
+string evalInt(string x){
+
+    int mult =1;
     string a = "";
-    for(int i=0; i<x.length(); i++){
-        if(isdigit(x[i])){
+
+    for(int i=0; i<x.length();i++){
+        if(x[i] == '-'){
+            mult *= -1;
+        }
+        else if(x[i] == '+'){
+            mult *= 1;
+        }
+
+        else if(isdigit(x[i])){
             a += x[i];
         }
     }
 
+    return to_string(stoi(a)*mult);
+}
+
+bool isInt(string x){
+
+    string a = "";
+    for(int i=0; i<x.length();i++){
+        if(isdigit(x[i])){
+            a += x[i];
+        }
+    }
     try{
-        isdigit(stoi(x));
+        isdigit(stoi(a));
         return true;
     }
 
@@ -60,7 +91,7 @@ void evalExp(string exp){
     
     for(int i=0; i<exp.length();i++){
         if(exp[i] == '='){
-            
+
         }
     }
 }
@@ -80,9 +111,11 @@ int main(){
             else{
                 for(int i=0; i<=input.length(); i++){
                     if(isdigit(input[i])){
-                        cout << input[i];
+                        
                     }
                 }
+
+                cout << evalInt(input);
             }
         }
 
