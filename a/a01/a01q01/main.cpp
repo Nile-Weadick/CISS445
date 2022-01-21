@@ -13,7 +13,7 @@ string getkeywords(string input){
             output += input[i];
         }
 
-        else if(input[i] == '+' || input[i] == '+'){
+        else if(input[i] == '+' || input[i] == '-'){
             
         }
 
