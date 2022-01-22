@@ -87,11 +87,39 @@ bool checkSymtable(string var){
     return false;
 }
 
+bool checkEqual(string x){
+
+    for(int i=0; i<x.length();i++){
+        if(x[i] == '='){
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void evalExp(string exp){
-    
+    string lhs,rhs;
+
     for(int i=0; i<exp.length();i++){
         if(exp[i] == '='){
+            
+            for(int j=i+1; j<exp.length(); j++){
+                rhs += exp[j];
+            }
+        }
 
+        else{
+            lhs += exp[i];
+        }
+    }
+
+    for(int i=0; i<sizeof(symtable); i++){
+
+        if(symtable[i][0] == " "){
+
+            symtable[i][0] = lhs;
+            symtable[i][1] = rhs;
         }
     }
 }
@@ -122,6 +150,12 @@ int main(){
         else{
 
             if(checkSymtable(input)){
+                
+                for(int i=0; i< sizeof(symtable); i++){
+                    if(symtable[i][0] == input){
+                        cout << symtable[i][1];
+                    }
+                }
 
             }
 
