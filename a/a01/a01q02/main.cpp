@@ -1,22 +1,38 @@
 #include <iostream>
 #include <cstring>
-#include <vector>
-#include <list>
+#include <string>
 
 using namespace std;
-
+//global symtable
 string symtable[5][2];
-/*
+/////////////////////////////////////////////////////
 
---123
-123
--+-123
-123
+bool findEqual(string x){
 
-int multiplyer = 1;
-multip * -1;
-*/
+    for(int i=0; i<x.length(); i++){
 
+        if(x[i] == '='){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/////////////////////////////////////////////////////////////////////
+bool isInt(string x){
+
+    for(int i=0; i<x.length(); i++){
+
+        if(isalpha(x[i]) || x[i] == '='){
+            return false;
+            break;
+        }
+    }
+
+    return true;
+}
+////////////////////////////////////////////////////////////
 string evalInt(string x){
 
     int mult =1;
@@ -37,46 +53,17 @@ string evalInt(string x){
 
     return to_string(stoi(a)*mult);
 }
-
-bool isInt(string x){
-
-    string a = "";
-    for(int i=0; i<x.length();i++){
-        if(isdigit(x[i])){
-            a += x[i];
-        }
-    }
-    try{
-        isdigit(stoi(a));
-        return true;
-    }
-
-    catch(exception& e){
-        return false;
-    }
-}
-
+//////////////////////////////////////////////////
 bool isOct(string x){
 
-    int num;
-    string c =  string(1,x[0]);
-    try{
-        num = stoi(c);
-    }
-
-    catch(const std::exception& e){
-        return false;
-    }
-
-    if(x.length() > 1 && num == 0){
+    if(x.length() > 1 && x[0] == '0'){
         return true;
     }
-
     else{
         return false;
     }
 }
-
+/////////////////////////////////////////////////////
 bool checkSymtable(string var){
     for(int i=0; i<sizeof(symtable); i++){
 
@@ -86,84 +73,72 @@ bool checkSymtable(string var){
     }
     return false;
 }
+///////////////////////////////////////////////////////
+void insertVarToSym(string x){
 
-bool checkEqual(string x){
+    string LHS, RHS;
 
-    for(int i=0; i<x.length();i++){
+    for(int i=0; i<x.length(); i++){
+
         if(x[i] == '='){
-            return true;
-        }
-    }
 
-    return false;
-}
-
-void evalExp(string exp){
-    string lhs,rhs;
-
-    for(int i=0; i<exp.length();i++){
-        if(exp[i] == '='){
-            
-            for(int j=i+1; j<exp.length(); j++){
-                rhs += exp[j];
+            for(int j = i+1; j<x.length(); i++){
+                RHS += x[j];
             }
         }
 
         else{
-            lhs += exp[i];
+            LHS += x[i];
         }
     }
+
 
     for(int i=0; i<sizeof(symtable); i++){
 
         if(symtable[i][0] == " "){
 
-            symtable[i][0] = lhs;
-            symtable[i][1] = rhs;
+            symtable[i][0] = LHS;
+            symtable[i][1] = RHS;
         }
     }
+
+    
 }
-
+//////////////////////////////////////////////////////
 int main(){
-    string input;
 
-    while(true){
+    string input;
+    for( ; ; )
+    {
         cout << "\n>>> ";
         cin >> input;
-
+        ///////////////////////////////////////
         if(isInt(input)){
-
             if(isOct(input)){
-                cout << "ERROR: I don't understand octals yet";
+                cout << "ERROR: Octal";
             }
+            ////////////////////////////
             else{
-                for(int i=0; i<=input.length(); i++){
-                    if(isdigit(input[i])){
-                        
-                    }
-                }
-
                 cout << evalInt(input);
             }
         }
 
+        ///////////////////////////////////////////////////////
         else{
 
             if(checkSymtable(input)){
-                
                 for(int i=0; i< sizeof(symtable); i++){
                     if(symtable[i][0] == input){
                         cout << symtable[i][1];
                     }
                 }
-
             }
-
+            ////////////////////////////////////////
             else{
                 cout << "ERROR: " << input << " is neither a value nor found in the symtable";
             }
         }
     }
-
+    
     return 0;
 }
