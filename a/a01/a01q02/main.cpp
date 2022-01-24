@@ -3,8 +3,11 @@
 #include <string>
 
 using namespace std;
+
 //global symtable
 string symtable[5][2];
+
+
 /////////////////////////////////////////////////////
 
 bool findEqual(string x){
@@ -101,8 +104,6 @@ void insertVarToSym(string x){
             symtable[i][1] = RHS;
         }
     }
-
-    
 }
 //////////////////////////////////////////////////////
 int main(){

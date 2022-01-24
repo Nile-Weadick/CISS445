@@ -1,73 +1,78 @@
 #include <iostream>
+#include <cstring>
+#include <string>
 
 using namespace std;
 
-// user input string
-string input;
+/////////////////////////////////////////////////////////////////////
+bool isInt(string x){
 
-string getkeywords(string input){
-    string output = "";
-    for(int i = 0; i < input.length(); i++){
+    for(int i=0; i<x.length(); i++){
 
-        if(isdigit(input[i])){
-            output += input[i];
-        }
-
-        else if(input[i] == '+' || input[i] == '-'){
-            
-        }
-
-        else{
-            cout << "ERROR: " << input[i] << " is neither a value nor found in the symtable";
+        if(isalpha(x[i]) || x[i] == '='){
+            return false;
             break;
         }
     }
 
-    return output;
+    return true;
 }
+////////////////////////////////////////////////////////////
+string evalInt(string x){
 
+    int mult =1;
+    string a = "";
 
-bool octalTest(string input){
-    int num;
-    string c =  string(1,input[0]);
-    try{
-        num = stoi(c);
+    for(int i=0; i<x.length();i++){
+        if(x[i] == '-'){
+            mult *= -1;
+        }
+        else if(x[i] == '+'){
+            mult *= 1;
+        }
+
+        else if(isdigit(x[i])){
+            a += x[i];
+        }
     }
 
-    catch(const std::exception& e){
-        return false;
-    }
+    return to_string(stoi(a)*mult);
+}
+//////////////////////////////////////////////////
+bool isOct(string x){
 
-    if(input.length() > 1 && num == 0){
+    if(x.length() > 1 && x[0] == '0'){
         return true;
     }
-
     else{
         return false;
     }
 }
 
+//////////////////////////////////////////////////////
 int main(){
 
-    string output; 
-
-    while(true){
-
-        // prompt & input
-        cout << "\n>>>";
+    string input;
+    for( ; ; )
+    {
+        cout << "\n>>> ";
         cin >> input;
-
-        output = getkeywords(input);
-        
-        if(octalTest(input) == true){
-            cout << "ERROR: I don't understand octals yet";
+        ///////////////////////////////////////
+        if(isInt(input)){
+            if(isOct(input)){
+                cout << "ERROR: Octal";
+            }
+            ////////////////////////////
+            else{
+                cout << evalInt(input);
+            }
         }
 
+        ///////////////////////////////////////////////////////
         else{
-            cout << output;
+                cout << "ERROR: " << input << " is neither a value nor found in the symtable";
         }
-
     }
-
+    
     return 0;
 }
