@@ -1,11 +1,13 @@
 #include <iostream>
 #include <cstring>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 //global symtable
-string symtable[5][2];
+vector <string> symtable_name;
+vector <string> symtable_value;
 
 
 /////////////////////////////////////////////////////
@@ -68,9 +70,10 @@ bool isOct(string x){
 }
 /////////////////////////////////////////////////////
 bool checkSymtable(string var){
-    for(int i=0; i<sizeof(symtable); i++){
 
-        if(symtable[i][0] == var){
+    for(int i=0; i<symtable_name.size(); i++){
+
+        if(symtable_name[i] == var){
             return true;
         }
     }
@@ -85,8 +88,9 @@ void insertVarToSym(string x){
 
         if(x[i] == '='){
 
-            for(int j = i+1; j<x.length(); i++){
+            for(int j = i+1; j<x.length(); j++){
                 RHS += x[j];
+                i = j;
             }
         }
 
@@ -95,22 +99,15 @@ void insertVarToSym(string x){
         }
     }
 
-
-    for(int i=0; i<sizeof(symtable); i++){
-
-        if(symtable[i][0] == " "){
-
-            symtable[i][0] = LHS;
-            symtable[i][1] = RHS;
-        }
-    }
+    symtable_name.push_back(LHS);
+    symtable_value.push_back(RHS);
 }
 //////////////////////////////////////////////////////
 int main(){
 
-    string input;
     for( ; ; )
-    {
+    {   
+        string input;
         cout << "\n>>> ";
         cin >> input;
         ///////////////////////////////////////
@@ -128,9 +125,9 @@ int main(){
         else{
 
             if(checkSymtable(input)){
-                for(int i=0; i< sizeof(symtable); i++){
-                    if(symtable[i][0] == input){
-                        cout << symtable[i][1];
+                for(int i=0; i< symtable_name.size(); i++){
+                    if(symtable_name[i] == input){
+                        cout << symtable_value[i];
                     }
                 }
             }
