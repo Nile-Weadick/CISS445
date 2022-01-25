@@ -26,16 +26,20 @@ bool findEqual(string x){
 
 /////////////////////////////////////////////////////////////////////
 bool isInt(string x){
-
+    
     for(int i=0; i<x.length(); i++){
 
-        if(isalpha(x[i]) || x[i] == '='){
+        if(x[i] == '='){
             return false;
-            break;
+        }
+
+        else if(isalpha(x[i])){
+            return false;
         }
     }
 
     return true;
+
 }
 ////////////////////////////////////////////////////////////
 string evalInt(string x){
@@ -71,7 +75,7 @@ bool isOct(string x){
 /////////////////////////////////////////////////////
 bool checkSymtable(string var){
 
-    for(int i=0; i<symtable_name.size(); i++){
+    for(int i = 0; i<symtable_name.size(); i++){
 
         if(symtable_name[i] == var){
             return true;
@@ -107,7 +111,7 @@ int main(){
 
     for( ; ; )
     {   
-        string input;
+        string input = "";
         cout << "\n>>> ";
         cin >> input;
         ///////////////////////////////////////
@@ -131,11 +135,18 @@ int main(){
                     }
                 }
             }
+
+            else if(findEqual(input)){
+
+                insertVarToSym(input);
+            }
             ////////////////////////////////////////
             else{
                 cout << "ERROR: " << input << " is neither a value nor found in the symtable";
             }
         }
+
+        input = "";
     }
     
     return 0;
