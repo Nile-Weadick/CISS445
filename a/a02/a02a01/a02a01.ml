@@ -23,9 +23,14 @@ let mult_funct = fun a -> fun b -> a *. b;;
 let div_funct = fun a -> fun b -> a /. b;;
 
 (**comp_func that returns a function that is the composition two functions.**)
+let comp_funct = fun f -> fun g -> fun x -> f (g x) ;;
 
 (** max_func that returns the maximum of the value of two functions.**)
 let max_funct = fun a -> fun b -> if a>b then a else b;;
+
+(**Q8**)
+let d = fun x -> fun h -> (((x+h)-x)/h);;
+
 
 (**print_int(add_funct (max 1 2 3) (max 4 5 6));;**)
 
