@@ -1,0 +1,76 @@
+\input{thispreamble.tex}
+
+\renewcommand\AUTHOR{nweadick1@cougars.ccis.edu} % CHANGE TO YOURS
+
+\begin{document}
+\topmattertwo
+
+If the question is not meaningful or the OCAML expression is invalid, write ERROR.
+
+%------------------------------------------------------------------------------
+\nextq
+Write a function \texttt{prodint} such that \texttt{(prodint x y)} return
+the product of integers \verb!x! and \verb!y!.
+Do NOT use syntactic sugar.
+This must be a complete ocaml expression that can run in the ocaml shell (so
+don't forget the two semicolons).
+\\
+\ANSWER
+\begin{answercode}
+let prodint = fun x -> fun y -> x + y;;
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+Refer to the previous question. 
+What is the type of \verb!prodint!?
+\\
+\ANSWER
+\begin{answercode}
+int -> int -> int, therfore, an int
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+Refer to the previous question. 
+What is the type of \verb!(prodint 2)!?
+\\
+\ANSWER
+\begin{answercode}
+int -> int, therfore, an int
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+Refer to the previous question. 
+What is the type of \verb!(prodint 2 42)!?
+\\
+\ANSWER
+\begin{answercode}
+int
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+What is the type of \verb!fun a -> fun b -> fun x -> a *. x +. b!?
+\\
+\ANSWER
+\begin{answercode}
+float -> float -> float -> float, therfore, an float
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+What is the type of \verb!(fun c -> fun x -> if c then x + 1 else x - 1) true!?
+\\
+\ANSWER
+\begin{answercode}
+bool -> int -> int, therfore, int
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\newpage
+\input{instructions.tex}
+\end{document}
+
+
