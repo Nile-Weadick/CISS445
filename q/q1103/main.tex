@@ -1,0 +1,61 @@
+\input{thispreamble.tex}
+
+\renewcommand\AUTHOR{nweadick1@cougars.ccis.edu} % CHANGE TO YOURS
+
+\begin{document}
+\topmattertwo
+
+%------------------------------------------------------------------------------
+\nextq
+Declare a function
+\verb!sq! that computes the square of the float that is passed in.
+You must write it using OCAML's lambda notation,
+i.e. without syntactic sugar or you'll get 0.
+(If I don't see \lq\lq \verb!fun!'' or \verb!->! then it's wrong ...
+you get zero ... nada ... zippo ...zilch). Here's a sanity check:
+\begin{console}
+# sq 2.0 ;;
+- : float = 4.
+\end{console}
+\\
+\ANSWER
+\begin{answercode}
+let sq = fun x -> x *. x;
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+Without using syntactic sugar,
+declare a function \verb!sumsq! that computes the sum of squares of two float
+values.
+For instance since $2.0^2 + 3.0^2$ is $13.0$:
+\begin{console}
+# sumsq 2.0 3.0;;
+- : float = 13.0
+\end{console}
+You must write it using OCAML's lambda notation, i.e., without syntactic sugar.
+You must use the function \verb!sq! above or you'll get 0.
+\\
+\ANSWER
+\begin{answercode}
+let sumsq = fun a -> fun b -> (a *. a) +. (b *. b);;
+\end{answercode}
+
+
+%------------------------------------------------------------------------------
+\nextq
+What is the type of the following expression:
+\begin{console}
+fun x -> if x < 0 then let a = 1 in x + a else let b = 2 in x - b
+\end{console}
+\\
+\ANSWER
+\begin{answercode}
+int -> int
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\newpage
+\input{instructions.tex}
+\end{document}
+

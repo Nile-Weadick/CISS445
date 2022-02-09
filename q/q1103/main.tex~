@@ -1,0 +1,79 @@
+\input{myquizpreamble.tex}
+\input{ciss445}
+\renewcommand\TITLE{Quiz 11-01}
+\renewcommand\AUTHOR{Dr.~Yihsiang Liow}
+\renewcommand\EMAIL{yliow@ccis.edu}
+%\usepackage{enumitem}
+
+\begin{document}
+\topmatter
+
+
+For the following either write down the type of the given expression or write ERROR
+
+
+Q1.
+\verb!1 + 2 + 3!
+\hfill {Answer:}\newsolutionbox{1}{0.3}{}
+
+
+Q2.
+\verb!1 * 2 – 3.1!
+\hfill {Answer:}\newsolutionbox{1}{0.3}{}
+
+
+Q3.
+\verb!print_int (3 + 5)!
+\hfill {Answer:}\newsolutionbox{1}{0.3}{}
+
+
+Q4.
+\verb!3.1415 +. 2.718!
+\hfill {Answer:}\newsolutionbox{1}{0.3}{}
+
+
+Q5.
+\verb!if 1 < 2 then 3 else 4.0!
+\hfill {Answer:}\newsolutionbox{1}{0.3}{}
+
+
+
+Q6.
+\verb!if 1.1 > 1 then 0.1 else 0.01!
+\hfill {Answer:}\newsolutionbox{1}{0.3}{}
+
+
+
+Q7.
+\verb!if 2.2 < 3.3 then 1 else 2!
+\hfill {Answer:}\newsolutionbox{1}{0.3}{}
+
+
+Q8.
+\verb!if 42 < 43 then (1 < 2) else (1.1 > 2.2)!
+\hfill {Answer:}\newsolutionbox{1}{0.3}{}
+
+
+Q9.
+\verb!let x = 42 in x + 1!
+\hfill {Answer:}\newsolutionbox{1}{0.3}{}
+
+
+Q10.
+\verb!let y = 2.3 in 1.0 * y!
+\hfill {Answer:}\newsolutionbox{1}{0.3}{}
+
+
+Q11.
+\verb!let z = 2 in if z < 0 then z else z - 1!
+\hfill {Answer:}\newsolutionbox{1}{0.3}{}
+
+Q12.
+\verb!let z = 2.3 in if z < 0.0 then z else z - 1!
+\hfill {Answer:}\newsolutionbox{1}{0.3}{}
+
+
+
+\end{document}
+
+

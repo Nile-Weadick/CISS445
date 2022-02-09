@@ -1,0 +1,53 @@
+\input{thispreamble.tex}
+
+\renewcommand\AUTHOR{nweadick1@cougars.ccis.edu} % CHANGE TO YOURS
+
+\begin{document}
+\topmattertwo
+
+%------------------------------------------------------------------------------
+\nextq
+What is the type of this expression:
+\begin{console}
+fun x -> fun y -> fun z -> x + y * z;;
+\end{console}
+\\
+\ANSWER
+\begin{answercode}
+int -> int -> int -> int
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+Simplify (i.e., substitute) the expression and then write down the type:
+\begin{console}
+(fun x -> fun y -> fun z -> x + y * z) 1;;
+\end{console}
+\\
+\ANSWER
+\begin{answercode}
+fun y -> fun z -> 1 + y * z;;
+\end{answercode}
+\begin{answercode}
+int -> int -> int
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+Simplify (i.e., substitute) the expression and write down the type:
+\begin{console}
+(fun x -> fun y -> fun z -> x + y * z) 1 3;;
+\end{console}
+\ANSWER
+\begin{answercode}
+fun z -> 1 + 3 * z
+\end{answercode}
+\begin{answercode}
+int -> int 
+\end{answercode}
+
+
+%------------------------------------------------------------------------------
+\newpage
+\input{instructions.tex}
+\end{document}
