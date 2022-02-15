@@ -1,0 +1,32 @@
+\input{thispreamble.tex}
+
+\renewcommand\AUTHOR{nweadick1@cougars.ccis.edu} % CHANGE TO YOURS
+
+\begin{document}
+\topmattertwo
+
+%------------------------------------------------------------------------------
+\nextq
+Evaluate and simplify the expression:
+\begin{console}
+(fun x -> fun y -> x (y 2)) (fun x -> x + 1);;
+\end{console}
+\\
+\ANSWER
+\begin{answercode}
+fun y -> (y 2)+1;;
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+What is the type of the expression in the above question?
+\\
+\ANSWER
+\begin{answercode}
+    ('a -> 'b) -> (int -> 'a) -> 'b
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\newpage
+\input{instructions.tex}
+\end{document}

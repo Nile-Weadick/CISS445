@@ -1,0 +1,49 @@
+\input{thispreamble.tex}
+
+\renewcommand\AUTHOR{nweadick1@cougars.ccis.edu} % CHANGE TO YOURS
+
+\begin{document}
+\topmattertwo
+
+%------------------------------------------------------------------------------
+\nextq
+Write a function \verb!f! such that \verb!(f n)! computes the sum of cubes
+from $0^3$ to $n^3$.
+\\
+\ANSWER
+\begin{answercode}
+let rec f = fun n -> match n with 0 -> 0 | n -> (n*n*n) + f (n-1);;
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+What is the type of \verb!f! in the previous question?
+\\
+\ANSWER
+\begin{answercode}
+int -> int
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+Write a function \verb!g! such that \verb!(g xs)!
+computes the sum of the cubes of the integers in \verb!xs!.
+\\
+\ANSWER
+\begin{answercode}
+let rec g = fun x -> match x with [] -> 0 | x::xs -> (x*x*x) + g (xs);;
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+What is the type of \verb!g! in the previous question?
+\\
+\ANSWER
+\begin{answercode}
+int list -> int
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\newpage
+\input{instructions.tex}
+\end{document}
