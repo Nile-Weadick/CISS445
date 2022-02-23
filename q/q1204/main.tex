@@ -1,0 +1,33 @@
+\input{thispreamble.tex}
+
+\renewcommand\AUTHOR{nweadick1@cougars.ccis.edu} % CHANGE TO YOURS
+
+\begin{document}
+\topmattertwo
+
+%------------------------------------------------------------------------------
+\nextq
+Write a function \verb!f! that does the following:
+\verb!f xs n! returns a list where the first element is the first element of
+\verb!xs! incremented by \verb!n! (an integer),
+the second element is the second element of \verb!x! incremented by \verb!n+1!,
+etc. For instance
+\begin{console}[fontsize=\footnotesize]
+# f [] 5;;
+- : int list = []
+# f [1;2;3] 3;;
+- : int list = [4; 6; 8]
+# f [3;2] 5;;
+- : int list = [8; 8]
+# f [1;1;1;1] 2;;
+- : int list = [3; 4; 5; 6]
+\end{console}
+\ANSWER
+\begin{answercode}
+let rec f = fun xs -> fun n -> match xs with [] -> [] | x::xs -> x+n::f (xs) (n+1);;
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\newpage
+\input{instructions.tex}
+\end{document}

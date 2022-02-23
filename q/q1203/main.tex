@@ -1,0 +1,61 @@
+\input{thispreamble.tex}
+
+\renewcommand\AUTHOR{nweadick1@cougars.ccis.edu} % CHANGE TO YOURS
+
+\begin{document}
+\topmattertwo
+
+%------------------------------------------------------------------------------
+\nextq
+Either compute the expression or write ERROR:
+\begin{console}
+(fun x -> fun y -> fun z -> x + y * z) 1 2 3;;
+\end{console}
+\\
+\ANSWER
+\begin{answercode}
+7
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+Either compute the value of \verb!z! or write ERROR:
+\begin{console}
+let x = fun x -> x * x;;
+let y = fun x -> match x with [] -> 0 | _ -> 1;;
+let z = y [x 8];;
+\end{console}
+\\
+\ANSWER
+\begin{answercode}
+1
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+What is the type of 
+\begin{console}
+fun x -> fun y -> x + y
+\end{console}
+\\
+\ANSWER
+\begin{answercode}
+int -> int -> int
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\nextq
+What is the type of 
+\begin{console}
+fun x -> fun y -> (x + y)::[]
+\end{console}
+\\
+\ANSWER
+\begin{answercode}
+int -> int -> int list
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\newpage
+\input{instructions.tex}
+\end{document}

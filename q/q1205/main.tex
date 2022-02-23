@@ -1,0 +1,102 @@
+\input{thispreamble.tex}
+
+\renewcommand\AUTHOR{nweadick1@cougars.ccis.edu} % CHANGE TO YOURS
+
+\begin{document}
+\topmattertwo
+
+Write down the type of the following expressions or write ERROR.
+%------------------------------------------------------------------------------
+\nextq
+\\
+\verb!fun x -> match x with [] -> [] | y::ys -> ys @ ys;;!
+\\
+\ANSWER
+\begin{answerlong}
+'a list -> 'a list
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\\
+\verb!fun x -> match x with x::xs -> string_of_float x | _ ->"";;!
+\\
+\ANSWER:
+\begin{answerlong}
+float list -> string
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\\
+\verb!1.1 +. 2.2 /. 3.3;;!
+\\
+\ANSWER:
+\begin{answerlong}
+float
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\\
+\verb!fun x -> fun y -> fun z -> z +. 1.1;;!
+\\
+\ANSWER:
+\begin{answerlong}
+'a -> 'b -> float -> float
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\\
+\verb!fun x -> fun y -> fun z -> [x + y; y + z; z + x];;!
+\\
+\ANSWER:
+\begin{answerlong}
+int -> int -> int -> int list
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\\
+\verb!(fun x -> fun y -> fun z -> x + y * z) 1 2;;!
+\\
+\ANSWER:
+\begin{answerlong}
+int -> int
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\\
+\verb![1; 2; 3.4];;!
+\\
+\ANSWER:
+\begin{answerlong}
+ERROR
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\\
+\verb!(1, 2, 3.4);;!
+\\
+\ANSWER:
+\begin{answerlong}
+int * int * float
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\\
+\verb!fun x -> fun y -> (x + y, x - y);;!
+\\
+\ANSWER:
+\begin{answerlong}
+int -> int -> int * int
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\newpage
+\input{instructions.tex}
+\end{document}

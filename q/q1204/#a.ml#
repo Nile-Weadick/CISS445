@@ -1,0 +1,7 @@
+let rec f xs n =
+  match xs with
+    [] -> []
+  | x::xs -> (x + n)::(f xs (n + 1))
+;;
+
+f [1;2;3] 5;;
