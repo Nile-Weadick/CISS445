@@ -1,0 +1,119 @@
+\input{thispreamble.tex}
+
+\renewcommand\AUTHOR{nweadick1@cougars.ccis.edu} % CHANGE TO YOURS
+
+\begin{document}
+\topmattertwo
+
+For each of the following, either Infer the types of the following expressions or indicate there is an error. If there are type variables, make sure you use 'a, 'b, 'c, etc in that order for instance the function
+\[
+\verb!fun x -> fun y -> x < y;;!
+\]
+has type \verb!'a -> 'b!; do not write \verb!'b -> 'a!.
+Also use \verb!'a! before \verb!'b! before \verb!'c!, etc. Also, note that
+\[
+\verb!fun x -> fun y -> x + y!
+\]
+has type \verb!int -> int -> int!.
+This is the same as \verb!int -> (int -> int)!.
+You need not (should not) include parentheses. However this expression 
+\[
+\verb!fun x -> fun y -> (x 1) + 2 + y;;!
+\]
+has type \verb!(int -> int) -> int -> int!.
+In this case the parentheses cannot be left out.
+
+%------------------------------------------------------------------------------
+\nextq
+\verb!fun x -> fun y -> y x;;!
+\\
+\ANSWER
+\begin{answerlong}
+'a -> ('a -> 'b) -> 'b 
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\verb!fun x -> fun y -> fun z -> x + y + z;;!
+\\
+\ANSWER
+\begin{answerlong}
+    int -> int -> int -> int
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\verb!fun x -> fun y -> (x, x + y);;!
+\\
+\ANSWER
+\begin{answerlong}
+    int -> int -> int * int
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\verb!fun x -> fun y -> (x, 0);;!
+\\
+\ANSWER
+\begin{answerlong}
+    'a -> 'b -> 'a * int
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\verb!fun x -> fun y -> (fun t -> t + x * y);;!
+\\
+\ANSWER
+\begin{answerlong}
+    int -> int -> int -> int
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\verb!fun x -> x::[fun y -> x + y];;!
+\\
+\ANSWER
+\begin{answerlong}
+ERROR
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\verb!fun x -> fun y -> (x y) + 1;;!
+\\
+\ANSWER
+\begin{answerlong}
+    ('a -> int) -> 'a -> int
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\verb!fun x -> fun y -> (y x) + 1;;! 
+\\
+\ANSWER
+\begin{answerlong}
+    'a -> ('a -> int) -> int
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\verb!fun x -> fun y -> x (y  + 1);;!
+\\
+\ANSWER
+\begin{answerlong}
+    (int -> 'a) -> int -> 'a
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\nextq
+\verb!fun x -> fun y -> x (y x);;!
+\\
+\ANSWER
+\begin{answerlong}
+    ('a -> 'b) -> (('a -> 'b) -> 'a) -> 'b
+\end{answerlong}
+
+%------------------------------------------------------------------------------
+\newpage
+\input{instructions.tex}
+\end{document}
