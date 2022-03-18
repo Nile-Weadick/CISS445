@@ -44,5 +44,7 @@ let rec size t = match t with Empty -> 0
 let rec height t = match t with Empty -> -1
 | Node (l,root,r) -> if(height (l) >= height (r)) then 1 + height(l) else 1+height(r);;
 
+let rec max = fun t -> match t with Empty -> () | Node (l,root,r) -> if root > max(l) then root;;
+
 
 

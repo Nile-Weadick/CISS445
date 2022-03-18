@@ -1,0 +1,66 @@
+\input{thispreamble.tex}
+
+\renewcommand\AUTHOR{jdoe5@cougars.ccis.edu} % CHANGE TO YOURS
+
+\begin{document}
+\topmattertwo
+
+
+%------------------------------------------------------------------------------
+\nextq
+You are given this:
+\begin{console}[fontsize=\small]
+type 'a btree = Empty
+              | Node of ('a * 'a btree * 'a btree)
+;;
+\end{console}
+write a functions \verb!leftmost_insert!
+so that \verb!leftmost_insert t v! will create a tree which is
+the same as \verb!t! but with \verb!v! inserted as the leftmost value
+in the tree.
+You need not use tail recursion.
+Here's are some small test cases:
+\begin{console}[fontsize=\small]
+# let t2 = leftmost_insert Empty 42;;
+val t2 : int btree = Node (42, Empty, Empty)
+# let t3 = leftmost_insert t2 41;;
+val t3 : int btree = Node (42, Node (41, Empty, Empty), Empty)
+\end{console}
+Here's a larger test case: for this tree
+\begin{console}[fontsize=\small]
+let t =
+  Node (
+    0,
+    Node (
+      2,
+      Empty,
+      Empty
+    ),
+    Node (
+      1,
+      Node (3, Empty, Empty),
+      Node (4, Empty, Empty)
+    )
+  )
+;;
+\end{console}
+when we add 40 to the tree with \verb!leftmost_insert!, we get:
+\begin{console}[fontsize=\small]
+# let t4 = leftmost_insert t 40;;
+val t4 : int btree =
+  Node
+   (0, Node (2, Node (40, Empty, Empty), Empty),
+    Node (1, Node (3, Empty, Empty), Node (4, Empty, Empty)))
+\end{console}
+\\
+\ANSWER
+\begin{answercode}
+
+  let rec leftmost_insert = fun t -> fun v -> 
+  match t with Node(root,left,right) -> Node(root,Node(v,Empty,Empty),right);;
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\newpage
+\input{instructions.tex}
+\end{document}
