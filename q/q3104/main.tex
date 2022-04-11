@@ -1,0 +1,77 @@
+\input{thispreamble.tex}
+
+\renewcommand\AUTHOR{nweadick1@cougars.ccis.edu} % CHANGE TO YOURS
+
+\begin{document}
+\topmattertwo
+
+
+%------------------------------------------------------------------------------
+\nextq
+\tf.
+Design a DFA $M$ that accepts strings made up of $0$'s and $1$'s
+that contains exactly one substring with a strictly positive even number of $0$'s
+(of course \lq\lq strictly positive even number" means 2 or 4 or 6 or ...).
+Here are some strings in $L(M)$:
+\[
+00, 0000, 100111, 1100, 111001111
+\]
+Here are some strings not in $L(M)$:
+\[
+\epsilon, 010, 000, 100000, 11110111, 1001001, 1100001110000
+\]
+Here's an example of now you should specify your DFA below:
+\begin{Verbatim}[frame=single,fontsize=\small]
+S = ["0", "1"]
+Q = ["q0", "q1", "q2", "q3"]
+start = "q0"
+F = ["q1"]
+transitions = {("q0","0"): "q1",
+               ("q0","1"): "q2",
+               ("q1","0"): "q0”,
+               ("q1","1"): "q1",
+               ("q2","0"): "q2",
+               ("q2","1"): "q3",
+               ("q3","0"): "q0",
+               ("q3","0"): "q0",
+              }
+\end{Verbatim}
+In this case, the set of symbols is $S$
+which is made up of \verb!"0"! and \verb!"1"!.
+The states are in $Q$ which in this case is made up of
+\verb!"q0"!, ..., \verb!"q3"!.
+The start state is \verb!"q0"!.
+The accept states are in $F$ – in this case where's only one accept states
+\verb!"q1"!.
+The transitions are in \verb!transitions!.
+For instance at state \verb!"q0"!,
+if the character to be processed is \verb!"0"!,
+then the DFA goes into state \verb!"q1"!.
+(See the first entry for transition.)
+If at state \verb!"q0"!, the character to be processes is \verb!"1"!,
+then the DFA goes into state \verb!"q2"!. Etc.
+The above is (of course) not the answer.
+It's provided just to show you how to describe the DFA to me.
+Make sure you follow the format exactly. 
+
+\ANSWER
+\begin{Verbatim}[frame=single,fontsize=\small]
+S = ["0", "1"]
+Q = ["q0", "q1"]
+start = "q0"
+F = ["q1"]
+transitions = {("q0","00"): "q0",
+                ("q0","1"): "q1",
+                ("q1","0"): "q0”,
+                ("q1","1"): "q1",
+                }
+\end{Verbatim}
+
+(This DFA is easy enough for you to design it as a DFA.
+But if you can't get the design right away, then describe the
+regex, then the NFA, and then convert to DFA.)
+
+%------------------------------------------------------------------------------
+\newpage
+\input{instructions.tex}
+\end{document}

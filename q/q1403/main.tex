@@ -1,0 +1,42 @@
+\input{thispreamble.tex}
+
+\renewcommand\AUTHOR{nweadick1@cougars.ccis.edu} % CHANGE TO YOURS
+
+\begin{document}
+\topmattertwo
+
+
+%------------------------------------------------------------------------------
+\nextq
+You are given this:
+\begin{console}[fontsize=\small]
+type 'a btree = Empty
+              | Node of ('a * 'a btree * 'a btree)
+;;
+\end{console}
+write a functions \verb!isequal!
+so that \verb!isequal t0 t1! is \verb!true! if and only if
+the two trees \verb!t0! and \verb!t1! are the same.
+Here's are some small test cases:
+\begin{console}[fontsize=\small]
+let t0 = Empty;;
+let t1 = Node (1, t0, t0);;
+let t2 = Node (1, Node (2, t0, t0), t0);;
+let t3 = Node (1, t0, Node (2, t0, t0));; 
+\end{console}
+\verb!isequal t0 t0!,
+\verb!isequal t1 t1!,
+\verb!isequal t2 t2!,
+\verb!isequal t3 t3! are all \verb!true!.
+All other pairs will give \verb!false!.
+For instance \verb!isequal t2 t3! is \verb!false!.
+\\
+\ANSWER
+\begin{answercode}
+    let rec isequal = fun t1 -> fun t2 -> if (t1 == t2) then true else false;;
+\end{answercode}
+
+%------------------------------------------------------------------------------
+\newpage
+\input{instructions.tex}
+\end{document}
